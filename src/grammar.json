@@ -176,16 +176,23 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "text",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[] \\r\\n\\.\\,\\?a-zA-Z]+"
+            }
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "spaces"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "interpolation"
+          "type": "FIELD",
+          "name": "vars",
+          "content": {
+            "type": "SYMBOL",
+            "name": "interpolation"
+          }
         }
       ]
     },

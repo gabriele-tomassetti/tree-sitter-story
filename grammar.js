@@ -59,9 +59,10 @@ module.exports = grammar({
 
     _inner: $ => choice(
       //token(/[a-zA-Z]+/),
-      $.identifier,
-      $.spaces,
-      $.interpolation
+      //$.identifier,
+      //$.spaces,
+      field("text", token(/[] \r\n\.\,\?a-zA-Z]+/)),
+      field("vars", $.interpolation)
     ),
 
     spaces: $ => /[] \r\n\.\,\?]+/,

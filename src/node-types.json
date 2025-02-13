@@ -156,24 +156,17 @@
   {
     "type": "string",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "interpolation",
-          "named": true
-        },
-        {
-          "type": "spaces",
-          "named": true
-        }
-      ]
+    "fields": {
+      "vars": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -273,10 +266,6 @@
   {
     "type": "question",
     "named": false
-  },
-  {
-    "type": "spaces",
-    "named": true
   },
   {
     "type": "story",
