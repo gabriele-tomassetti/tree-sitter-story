@@ -1,0 +1,14 @@
+==================
+Structure
+==================
+
+title:
+"Hello story"
+
+---
+
+(source_file
+  (title
+    (string)
+  )
+)

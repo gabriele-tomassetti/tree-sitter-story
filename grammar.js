@@ -19,11 +19,11 @@ module.exports = grammar({
   rules: {
     source_file: $ => seq(
       $.title,
-      $.characters,
-      $.inputs,
-      $.constraints,
-      $.text,
-      $.question
+      optional($.characters),
+      optional($.inputs),
+      optional($.constraints),
+      optional($.text),
+      optional($.question)
     ),
 
     title: $ => seq(
@@ -36,9 +36,7 @@ module.exports = grammar({
 
     _list: $ => seq(
       $.identifier,
-      optional(seq(
         repeat(seq(",", $.identifier))
-      )),
     ),
 
     inputs: $ => seq(
@@ -61,7 +59,7 @@ module.exports = grammar({
       //token(/[a-zA-Z]+/),
       //$.identifier,
       //$.spaces,
-      field("text", token(/[] \r\n\.\,\?a-zA-Z]+/)),
+      field("text", token(/[ \r\n\.\,\?a-zA-Z]+/)),
       field("vars", $.interpolation)
     ),
 
@@ -76,7 +74,7 @@ module.exports = grammar({
     //just_string: $ => /"[^"]"/,
 
     _expression: $ => choice(
-      prec.left(4, seq('(', $._expression, ')')),
+      prec(1, seq('(', $._expression, ')')),
       $.identifier,
       $.number,
       $.binary_expression
@@ -84,12 +82,12 @@ module.exports = grammar({
 
     binary_expression: $ =>
       choice(
-        prec.left(3, seq($._expression, ">", $._expression)),
-        prec.left(3, seq($._expression, "<", $._expression)),
-        prec.left(2, seq($._expression, "/", $._expression)),
-        prec.left(2, seq($._expression, "*", $._expression)),
-        prec.left(1, seq($._expression, "+", $._expression)),
-        prec.left(1, seq($._expression, "-", $._expression)),
+        prec.left(2, seq($._expression, ">", $._expression)),
+        prec.left(2, seq($._expression, "<", $._expression)),
+        prec.left(3, seq($._expression, "/", $._expression)),
+        prec.left(3, seq($._expression, "*", $._expression)),
+        prec.left(4, seq($._expression, "+", $._expression)),
+        prec.left(4, seq($._expression, "-", $._expression)),
       ),
 
     question: $ => seq(
