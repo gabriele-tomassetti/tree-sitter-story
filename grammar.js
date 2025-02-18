@@ -15,6 +15,7 @@ module.exports = grammar({
   ],*/
 
   word: $ => $.identifier,
+  supertypes: $ => [],
 
   rules: {
     source_file: $ => seq(
@@ -31,7 +32,7 @@ module.exports = grammar({
     ),
 
     characters: $ => seq(
-      'characters', ':', $._list
+      'characters', ':', field("people", $._list)
     ),
 
     _list: $ => seq(

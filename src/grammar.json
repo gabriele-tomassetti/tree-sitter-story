@@ -101,8 +101,12 @@
           "value": ":"
         },
         {
-          "type": "SYMBOL",
-          "name": "_list"
+          "type": "FIELD",
+          "name": "people",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_list"
+          }
         }
       ]
     },

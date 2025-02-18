@@ -1,8 +1,5 @@
 (identifier) @variable
 
-((identifier) @function.method
- (#is-not? local))
-
 [
   "title"
   "characters"
@@ -12,8 +9,6 @@
   "question"
 ] @keyword
 
-((identifier) @keyword
- (#match? @keyword "^(private|protected|public)$"))
 
 ; Identifiers
 
@@ -29,6 +24,7 @@
 
 (interpolation
   "{" @punctuation.special
+  (identifier) @number
   "}" @punctuation.special) @embedded
 
 ; Operators

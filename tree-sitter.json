@@ -9,9 +9,10 @@
       "file-types": [
         "story"
       ],
-      "injection-regex": "^story$",
       "class-name": "TreeSitterStory",
-      "highlights": "queries/highlights.scm"
+      "injection-regex": "^story$",
+      "highlights": "queries/highlights.scm",
+      "tags": "queries/tags.scm"
     }
   ],
   "metadata": {
@@ -32,7 +33,7 @@
     "c": true,
     "go": false,
     "node": true,
-    "python": false,
+    "python": true,
     "rust": true,
     "swift": false,
     "zig": false,
