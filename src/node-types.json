@@ -125,7 +125,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -161,17 +160,20 @@
   {
     "type": "string",
     "named": true,
-    "fields": {
-      "vars": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
+        {
+          "type": "spaces",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -271,6 +273,10 @@
   {
     "type": "question",
     "named": false
+  },
+  {
+    "type": "spaces",
+    "named": true
   },
   {
     "type": "story",

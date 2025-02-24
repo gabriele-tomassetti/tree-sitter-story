@@ -9,10 +9,6 @@
 
 module.exports = grammar({
   name: "story",
-  
-  /*conflicts: $ => [
-    [$.line],
-  ],*/
 
   word: $ => $.identifier,
   supertypes: $ => [],
@@ -57,22 +53,17 @@ module.exports = grammar({
     ),
 
     _inner: $ => choice(
-      //token(/[a-zA-Z]+/),
-      //$.identifier,
-      //$.spaces,
       field("text", token(/[ \r\n\.\,\?a-zA-Z]+/)),
       field("vars", $.interpolation)
     ),
 
-    spaces: $ => /[] \r\n\.\,\?]+/,
+    spaces: $ => /[ \r\n\.\,\?a-zA-Z]+/,
 
     string: $ => seq(
       '"', repeat1(
         $._inner
       ) , '"'
     ),
-
-    //just_string: $ => /"[^"]"/,
 
     _expression: $ => choice(
       prec(1, seq('(', $._expression, ')')),
@@ -99,37 +90,6 @@ module.exports = grammar({
     identifier: $ => /[a-zA-Z]+/,
 
     number: $ => /\d+/
-
-    /*parameter_list: $ => seq(
-      '(',
-       // TODO: parameters
-      ')'
-    ),
-
-    _type: $ => choice(
-      'bool'
-      // TODO: other kinds of types
-    ),
-
-    block: $ => seq(
-      '{',
-      repeat($._statement),
-      '}'
-    ),
-
-    _statement: $ => choice(
-      $.return_statement
-      // TODO: other kinds of statements
-    ),
-
-    return_statement: $ => seq(
-      'return',
-      $._expression,
-      ';'
-    ),
-
-   */
-
   }  
 });
 

@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "story",
   "word": "identifier",
   "rules": {
@@ -207,29 +206,18 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "text",
-          "content": {
-            "type": "TOKEN",
-            "content": {
-              "type": "PATTERN",
-              "value": "[ \\r\\n\\.\\,\\?a-zA-Z]+"
-            }
-          }
+          "type": "SYMBOL",
+          "name": "spaces"
         },
         {
-          "type": "FIELD",
-          "name": "vars",
-          "content": {
-            "type": "SYMBOL",
-            "name": "interpolation"
-          }
+          "type": "SYMBOL",
+          "name": "interpolation"
         }
       ]
     },
     "spaces": {
       "type": "PATTERN",
-      "value": "[] \\r\\n\\.\\,\\?]+"
+      "value": "[ \\r\\n\\.\\,\\?a-zA-Z]+"
     },
     "string": {
       "type": "SEQ",
@@ -464,6 +452,5 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
